@@ -13,6 +13,20 @@
 		9D2E7BD924EE8D6A00AB8C52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E7BD724EE8D6A00AB8C52 /* Main.storyboard */; };
 		9D2E7BDB24EE8D7100AB8C52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E7BDA24EE8D7100AB8C52 /* Assets.xcassets */; };
 		9D2E7BDE24EE8D7100AB8C52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D2E7BDC24EE8D7100AB8C52 /* LaunchScreen.storyboard */; };
+		9D2E7BE824EE998300AB8C52 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E7BE724EE998300AB8C52 /* FavoritesViewController.swift */; };
+		9D2E7BEA24EE9AD000AB8C52 /* AddFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E7BE924EE9AD000AB8C52 /* AddFavoritesViewController.swift */; };
+		9D2E7BEC24EE9FE000AB8C52 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E7BEB24EE9FE000AB8C52 /* Location.swift */; };
+		9D2E7BEE24EEA0A200AB8C52 /* WeatherForDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E7BED24EEA0A200AB8C52 /* WeatherForDay.swift */; };
+		9D2E7BF024EEA44B00AB8C52 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E7BEF24EEA44B00AB8C52 /* WeatherDataModel.swift */; };
+		9D2E7BF224EEB3AE00AB8C52 /* WeatherForDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2E7BF124EEB3AE00AB8C52 /* WeatherForDayCell.swift */; };
+		9D3265B224EEBF0100C78BE8 /* slonecznie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3265AC24EEBF0000C78BE8 /* slonecznie.jpg */; };
+		9D3265B324EEBF0100C78BE8 /* deszcz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3265AD24EEBF0000C78BE8 /* deszcz.jpg */; };
+		9D3265B424EEBF0100C78BE8 /* lekki_deszcz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3265AE24EEBF0000C78BE8 /* lekki_deszcz.jpg */; };
+		9D3265B524EEBF0100C78BE8 /* snieg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D3265AF24EEBF0000C78BE8 /* snieg.png */; };
+		9D3265B624EEBF0100C78BE8 /* czesciowe_zachmurzenie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3265B024EEBF0100C78BE8 /* czesciowe_zachmurzenie.jpg */; };
+		9D3265B724EEBF0100C78BE8 /* zachmurzenie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D3265B124EEBF0100C78BE8 /* zachmurzenie.jpg */; };
+		9D3265B924EEC69900C78BE8 /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3265B824EEC69900C78BE8 /* FavoriteViewCell.swift */; };
+		9D3265BB24EEC7FB00C78BE8 /* AddFavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3265BA24EEC7FB00C78BE8 /* AddFavoriteViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +38,20 @@
 		9D2E7BDA24EE8D7100AB8C52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D2E7BDD24EE8D7100AB8C52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D2E7BDF24EE8D7100AB8C52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D2E7BE724EE998300AB8C52 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		9D2E7BE924EE9AD000AB8C52 /* AddFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoritesViewController.swift; sourceTree = "<group>"; };
+		9D2E7BEB24EE9FE000AB8C52 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9D2E7BED24EEA0A200AB8C52 /* WeatherForDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForDay.swift; sourceTree = "<group>"; };
+		9D2E7BEF24EEA44B00AB8C52 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
+		9D2E7BF124EEB3AE00AB8C52 /* WeatherForDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForDayCell.swift; sourceTree = "<group>"; };
+		9D3265AC24EEBF0000C78BE8 /* slonecznie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slonecznie.jpg; sourceTree = "<group>"; };
+		9D3265AD24EEBF0000C78BE8 /* deszcz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deszcz.jpg; sourceTree = "<group>"; };
+		9D3265AE24EEBF0000C78BE8 /* lekki_deszcz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lekki_deszcz.jpg; sourceTree = "<group>"; };
+		9D3265AF24EEBF0000C78BE8 /* snieg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snieg.png; sourceTree = "<group>"; };
+		9D3265B024EEBF0100C78BE8 /* czesciowe_zachmurzenie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = czesciowe_zachmurzenie.jpg; sourceTree = "<group>"; };
+		9D3265B124EEBF0100C78BE8 /* zachmurzenie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zachmurzenie.jpg; sourceTree = "<group>"; };
+		9D3265B824EEC69900C78BE8 /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
+		9D3265BA24EEC7FB00C78BE8 /* AddFavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +84,7 @@
 		9D2E7BD024EE8D6A00AB8C52 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				9D2E7BF324EEB8E600AB8C52 /* img */,
 				9D2E7BE624EE8E3100AB8C52 /* ui */,
 				9D2E7BE524EE8E0F00AB8C52 /* src */,
 				9D2E7BDA24EE8D7100AB8C52 /* Assets.xcassets */,
@@ -67,9 +96,17 @@
 		9D2E7BE524EE8E0F00AB8C52 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				9D2E7BD524EE8D6A00AB8C52 /* ViewController.swift */,
-				9D2E7BD324EE8D6A00AB8C52 /* SceneDelegate.swift */,
 				9D2E7BD124EE8D6A00AB8C52 /* AppDelegate.swift */,
+				9D2E7BD324EE8D6A00AB8C52 /* SceneDelegate.swift */,
+				9D2E7BD524EE8D6A00AB8C52 /* ViewController.swift */,
+				9D2E7BE724EE998300AB8C52 /* FavoritesViewController.swift */,
+				9D2E7BE924EE9AD000AB8C52 /* AddFavoritesViewController.swift */,
+				9D2E7BF124EEB3AE00AB8C52 /* WeatherForDayCell.swift */,
+				9D3265B824EEC69900C78BE8 /* FavoriteViewCell.swift */,
+				9D3265BA24EEC7FB00C78BE8 /* AddFavoriteViewCell.swift */,
+				9D2E7BEB24EE9FE000AB8C52 /* Location.swift */,
+				9D2E7BED24EEA0A200AB8C52 /* WeatherForDay.swift */,
+				9D2E7BEF24EEA44B00AB8C52 /* WeatherDataModel.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -81,6 +118,19 @@
 				9D2E7BDC24EE8D7100AB8C52 /* LaunchScreen.storyboard */,
 			);
 			path = ui;
+			sourceTree = "<group>";
+		};
+		9D2E7BF324EEB8E600AB8C52 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				9D3265B024EEBF0100C78BE8 /* czesciowe_zachmurzenie.jpg */,
+				9D3265AD24EEBF0000C78BE8 /* deszcz.jpg */,
+				9D3265AE24EEBF0000C78BE8 /* lekki_deszcz.jpg */,
+				9D3265AC24EEBF0000C78BE8 /* slonecznie.jpg */,
+				9D3265AF24EEBF0000C78BE8 /* snieg.png */,
+				9D3265B124EEBF0100C78BE8 /* zachmurzenie.jpg */,
+			);
+			path = img;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +191,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D3265B724EEBF0100C78BE8 /* zachmurzenie.jpg in Resources */,
 				9D2E7BDE24EE8D7100AB8C52 /* LaunchScreen.storyboard in Resources */,
+				9D3265B624EEBF0100C78BE8 /* czesciowe_zachmurzenie.jpg in Resources */,
+				9D3265B424EEBF0100C78BE8 /* lekki_deszcz.jpg in Resources */,
 				9D2E7BDB24EE8D7100AB8C52 /* Assets.xcassets in Resources */,
+				9D3265B324EEBF0100C78BE8 /* deszcz.jpg in Resources */,
 				9D2E7BD924EE8D6A00AB8C52 /* Main.storyboard in Resources */,
+				9D3265B224EEBF0100C78BE8 /* slonecznie.jpg in Resources */,
+				9D3265B524EEBF0100C78BE8 /* snieg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,8 +210,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D2E7BEA24EE9AD000AB8C52 /* AddFavoritesViewController.swift in Sources */,
 				9D2E7BD624EE8D6A00AB8C52 /* ViewController.swift in Sources */,
 				9D2E7BD224EE8D6A00AB8C52 /* AppDelegate.swift in Sources */,
+				9D2E7BE824EE998300AB8C52 /* FavoritesViewController.swift in Sources */,
+				9D2E7BF024EEA44B00AB8C52 /* WeatherDataModel.swift in Sources */,
+				9D2E7BF224EEB3AE00AB8C52 /* WeatherForDayCell.swift in Sources */,
+				9D3265BB24EEC7FB00C78BE8 /* AddFavoriteViewCell.swift in Sources */,
+				9D3265B924EEC69900C78BE8 /* FavoriteViewCell.swift in Sources */,
+				9D2E7BEC24EE9FE000AB8C52 /* Location.swift in Sources */,
+				9D2E7BEE24EEA0A200AB8C52 /* WeatherForDay.swift in Sources */,
 				9D2E7BD424EE8D6A00AB8C52 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
