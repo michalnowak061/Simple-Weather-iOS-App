@@ -12,20 +12,23 @@ import UIKit
 class ViewController: UIViewController, FavoritesViewControllerDelegate {
     var weatherDataModel = WeatherDataModel()
     
-    let tableViewFormatter = DateFormatter()
-    
     @IBOutlet weak var locationName: UILabel!
     @IBOutlet weak var locationWeather: UILabel!
     @IBOutlet weak var locationTemperature: UILabel!
     
     @IBOutlet weak var nextDays: UITableView!
+    
+    let queue = DispatchQueue(label: "work-queue")
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        queue.async {
+            self.task()
+        }
         
-        tableViewFormatter.dateFormat = "EEEE"
         nextDays.dataSource = self
-        
+    }
+    
+    func updateView() {
         locationName.text = weatherDataModel.actualLocation.name
         locationWeather.text = weatherDataModel.actualLocation.weather
         locationTemperature.text = weatherDataModel.actualLocation.temperature + "℃"
@@ -49,7 +52,16 @@ class ViewController: UIViewController, FavoritesViewControllerDelegate {
     
     func weatherDataModelUpdate(data: WeatherDataModel) {
         weatherDataModel = data
-        viewDidLoad()
+    }
+    
+    func task() {
+        while(true) {
+            weatherDataModel.update()
+            DispatchQueue.main.async {
+                self.updateView()
+            }
+            sleep(1)
+        }
     }
 }
 
@@ -65,6 +77,7 @@ extension ViewController: UITableViewDataSource {
         cell.day.text = weatherDataModel.weatherForDays[indexPath.row].day
         cell.icon.image = weatherDataModel.getIcon(index: indexPath.row)
         cell.minmaxTemperature.text = weatherDataModel.weatherForDays[indexPath.row].minTemperature + "/" + weatherDataModel.weatherForDays[indexPath.row].maxTemperature + "℃"
+        
         return cell
     }
 }

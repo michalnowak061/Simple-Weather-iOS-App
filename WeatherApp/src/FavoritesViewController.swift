@@ -9,15 +9,19 @@
 import Foundation
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UIViewController, AddFavoritesViewControllerDelegate, FavoritesViewControllerDelegate {
     var weatherDataModel = WeatherDataModel()
     
     weak var delegate: FavoritesViewControllerDelegate?
     
     @IBOutlet weak var favoritesLocations: UITableView!
     
+    @IBAction func backButtonPush(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
         
         favoritesLocations.dataSource = self
         favoritesLocations.delegate = self
@@ -27,15 +31,21 @@ class FavoritesViewController: UIViewController {
         if let id = segue.identifier {
             switch id {
             case "showAddFavorites":
-                guard let addFavVC: FavoritesViewController = segue.destination as? FavoritesViewController else {
+                guard let addFavVC: AddFavoritesViewController = segue.destination as? AddFavoritesViewController else {
                     return
                 }
                 
                 addFavVC.weatherDataModel = weatherDataModel
+                addFavVC.delegate = self
             default:
                 break
             }
         }
+    }
+    
+    func weatherDataModelUpdate(data: WeatherDataModel) {
+        weatherDataModel = data
+        favoritesLocations.reloadData()
     }
 }
 
