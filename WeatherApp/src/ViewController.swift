@@ -22,7 +22,15 @@ class ViewController: UIViewController, FavoritesViewControllerDelegate {
 
     override func viewDidLoad() {
         queue.async {
-            self.task()
+            self.weatherDataModel.loadCityIdJSON()
+            
+            while(true) {
+                self.weatherDataModel.update()
+                DispatchQueue.main.async {
+                    self.updateView()
+                }
+                sleep(2)
+            }
         }
         
         nextDays.dataSource = self
@@ -44,6 +52,8 @@ class ViewController: UIViewController, FavoritesViewControllerDelegate {
                 
                 favVC.weatherDataModel = weatherDataModel
                 favVC.delegate = self
+                
+                queue.async {}
             default:
                 break
             }
@@ -52,16 +62,7 @@ class ViewController: UIViewController, FavoritesViewControllerDelegate {
     
     func weatherDataModelUpdate(data: WeatherDataModel) {
         weatherDataModel = data
-    }
-    
-    func task() {
-        while(true) {
-            weatherDataModel.update()
-            DispatchQueue.main.async {
-                self.updateView()
-            }
-            sleep(1)
-        }
+        updateView()
     }
 }
 

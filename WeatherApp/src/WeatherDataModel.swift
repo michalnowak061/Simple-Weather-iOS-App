@@ -78,7 +78,7 @@ struct Location {
     var id = 833
     var name = "-"
     var weather = "-"
-    var temperature = "-"
+    var temperature = "--"
     var time = "--:--"
 }
 
@@ -96,7 +96,6 @@ class WeatherDataModel {
     var weatherForDays: [WeatherForDay] = []
     
     init() {
-        load()
     }
     
     public func getIcon(index: Int) -> UIImage {
@@ -126,13 +125,25 @@ class WeatherDataModel {
                 print("Wystapil blad: \(String(describing: error))")
             }
             else if let responseModel = response {
-                DispatchQueue.main.async {
-                    self.actualLocation.name = responseModel.name
-                    self.actualLocation.temperature = String(format: "%.0f", responseModel.forecast.temperature)
-                    self.actualLocation.weather = responseModel.weather[0].description
-                    print("Miasto: \(self.actualLocation.name)")
-                    print("Pogoda: \(self.actualLocation.weather)")
-                    print("Temperatura: \(self.actualLocation.temperature)")
+                self.actualLocation.name = responseModel.name
+                self.actualLocation.temperature = String(format: "%.0f", responseModel.forecast.temperature)
+                self.actualLocation.weather = responseModel.weather[0].description
+            }
+        }
+        
+        if favoritesLocations.count > 0 {
+            for index in 0...favoritesLocations.count - 1 {
+                let locationId = favoritesLocations[index].id
+                
+                OpenWeatherMap.instance.downloadJSON(id: locationId) { (response, error) in
+                    if error != nil {
+                        print("Wystapil blad: \(String(describing: error))")
+                    }
+                    else if let responseModel = response {
+                        self.favoritesLocations[index].name = responseModel.name
+                        self.favoritesLocations[index].temperature = String(format: "%.0f", responseModel.forecast.temperature)
+                        self.favoritesLocations[index].weather = responseModel.weather[0].description
+                    }
                 }
             }
         }
@@ -141,20 +152,20 @@ class WeatherDataModel {
     public func save() {
         
     }
-    
-    public func load() {
+
+    public func loadCityIdJSON() {
         if let url = Bundle.main.url(forResource: "city.list", withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let json = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
-
+                
                 for cityList in json {
                     let cityName: String = cityList["name"]! as! String
                     let cityID: Int = cityList["id"]! as! Int
                     
                     let city = (cityName, cityID)
                     
-                    locationsIdList.append(city)
+                    self.locationsIdList.append(city)
                 }
             } catch let jsonErr {
                 print("err", jsonErr)

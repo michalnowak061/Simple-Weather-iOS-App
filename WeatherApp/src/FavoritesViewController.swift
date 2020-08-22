@@ -14,14 +14,25 @@ class FavoritesViewController: UIViewController, AddFavoritesViewControllerDeleg
     
     weak var delegate: FavoritesViewControllerDelegate?
     
+    var queue = DispatchQueue(label: "work-queue")
+    
     @IBOutlet weak var favoritesLocations: UITableView!
     
     @IBAction func backButtonPush(_ sender: UIButton) {
+        queue.async {}
         dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
-        //super.viewDidLoad()
+        queue.async {
+            while(true) {
+                self.weatherDataModel.update()
+                DispatchQueue.main.async {
+                    self.updateView()
+                }
+                sleep(1)
+            }
+        }
         
         favoritesLocations.dataSource = self
         favoritesLocations.delegate = self
@@ -37,6 +48,8 @@ class FavoritesViewController: UIViewController, AddFavoritesViewControllerDeleg
                 
                 addFavVC.weatherDataModel = weatherDataModel
                 addFavVC.delegate = self
+                
+                queue.async {}
             default:
                 break
             }
@@ -45,6 +58,10 @@ class FavoritesViewController: UIViewController, AddFavoritesViewControllerDeleg
     
     func weatherDataModelUpdate(data: WeatherDataModel) {
         weatherDataModel = data
+        updateView()
+    }
+    
+    func updateView() {
         favoritesLocations.reloadData()
     }
 }
@@ -73,6 +90,9 @@ extension FavoritesViewController: UITableViewDataSource {
 
 extension FavoritesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row < weatherDataModel.favoritesLocations.count else {
+            return
+        }
         weatherDataModel.actualLocation = weatherDataModel.favoritesLocations[indexPath.row]
         self.delegate?.weatherDataModelUpdate(data: weatherDataModel)
         

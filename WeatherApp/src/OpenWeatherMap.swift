@@ -34,12 +34,17 @@ class OpenWeatherMap {
                 callback(nil, LoadingError.wrongResponse)
                 return
             }
-            
+    
             switch response.result {
             case .success:
-                let decoder = JSONDecoder()
-                let responseModel = try! decoder.decode(WeatherResponse.self, from: JSON)
-                callback(responseModel, nil)
+                do {
+                    let decoder = JSONDecoder()
+                    let responseModel = try decoder.decode(WeatherResponse.self, from: JSON)
+                    callback(responseModel, nil)
+                }
+                catch {
+                    callback(nil, LoadingError.wrongResponse)
+                }
             case .failure:
                 callback(nil, LoadingError.wrongResponse)
             }
