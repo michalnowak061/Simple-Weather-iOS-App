@@ -15,14 +15,18 @@ class ViewController: UIViewController, FavoritesViewControllerDelegate {
     @IBOutlet weak var locationName: UILabel!
     @IBOutlet weak var locationWeather: UILabel!
     @IBOutlet weak var locationTemperature: UILabel!
-    
-    @IBOutlet weak var nextDays: UITableView!
+    @IBOutlet weak var locationIcon: UIImageView!
+    @IBOutlet weak var locationMinMaxTemperature: UILabel!
+    @IBOutlet weak var locationFeelsLike: UILabel!
+    @IBOutlet weak var locationPressure: UILabel!
+    @IBOutlet weak var locationHumidity: UILabel!
     
     let queue = DispatchQueue(label: "work-queue")
 
     override func viewDidLoad() {
         queue.async {
             self.weatherDataModel.loadCityIdJSON()
+            self.weatherDataModel.load()
             
             while(true) {
                 self.weatherDataModel.update()
@@ -30,16 +34,21 @@ class ViewController: UIViewController, FavoritesViewControllerDelegate {
                     self.updateView()
                 }
                 sleep(2)
+                
+                self.weatherDataModel.save()
             }
         }
-        
-        nextDays.dataSource = self
     }
     
     func updateView() {
         locationName.text = weatherDataModel.actualLocation.name
         locationWeather.text = weatherDataModel.actualLocation.weather
         locationTemperature.text = weatherDataModel.actualLocation.temperature + "℃"
+        locationFeelsLike.text = weatherDataModel.actualLocation.feelsLike + "℃"
+        locationMinMaxTemperature.text = weatherDataModel.actualLocation.minMaxTemperature + "℃"
+        locationPressure.text = weatherDataModel.actualLocation.pressure + "hPa"
+        locationHumidity.text = weatherDataModel.actualLocation.humidity + "%"
+        locationIcon.image = weatherDataModel.actualLocation.getIcon()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,22 +72,5 @@ class ViewController: UIViewController, FavoritesViewControllerDelegate {
     func weatherDataModelUpdate(data: WeatherDataModel) {
         weatherDataModel = data
         updateView()
-    }
-}
-
-extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherDataModel.weatherForDays.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "weatherForDayCell", for: indexPath) as! WeatherForDayCell
-        
-        cell.day.text = weatherDataModel.weatherForDays[indexPath.row].day
-        cell.icon.image = weatherDataModel.getIcon(index: indexPath.row)
-        cell.minmaxTemperature.text = weatherDataModel.weatherForDays[indexPath.row].minTemperature + "/" + weatherDataModel.weatherForDays[indexPath.row].maxTemperature + "℃"
-        
-        return cell
     }
 }
